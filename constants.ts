@@ -1,0 +1,197 @@
+import { Letter } from './types';
+
+// Data extracted from the provided images
+export const LETTERS_DATA: Letter[] = [
+  {
+    id: '1',
+    letterCode: '1742132',
+    name: 'Kelly Vitória',
+    age: 15,
+    gender: 'F',
+    schoolYear: '8º Ano',
+    requestSummary: 'Tênis e/ou Roupa',
+    fullTranscription: 'Gostaria de ganhar um tênis da Sal e Pimenta Branco, Preto ou Branco e preto. Obs: Não precisa ser original. Ou eu queria 3 calças da Sal e Pimenta (tem um combo de 3) mas se não conseguir tudo bem, mas eu gostaria muito de ganhar todos. Ou uma bebê Reborn. Calça Skinny num 38. Tênis num 36/37.',
+    categories: ['Roupa', 'Calçado', 'Brinquedo'],
+    status: 'available'
+  },
+  {
+    id: '2',
+    letterCode: '1742145',
+    name: 'Renata',
+    age: 16,
+    gender: 'F',
+    schoolYear: '1º Ano',
+    requestSummary: 'Calça Cargo e Tênis',
+    fullTranscription: 'Gostaria de ganhar calças cargo jeans tam 54, e um Air Force branco Tam 37-38. Obrigado e feliz natal!!!',
+    categories: ['Roupa', 'Calçado'],
+    status: 'available'
+  },
+  {
+    id: '3',
+    letterCode: '1742122',
+    name: 'Isadora',
+    age: 16,
+    gender: 'F',
+    schoolYear: '1º Ano',
+    requestSummary: 'Tênis e/ou Roupa',
+    fullTranscription: 'Air Force branco com preto (não precisa ser original), 3 calças da sal e pimenta tam 38 (não precisa ser original), 5 croppeds de manga curta cor branca, preto, rosa, nude, vermelho tam M.',
+    categories: ['Roupa', 'Calçado'],
+    status: 'available'
+  },
+  {
+    id: '4',
+    letterCode: '1749083',
+    name: 'Carlos Antônio Ferreira',
+    age: 11,
+    gender: 'M',
+    schoolYear: '5º Ano',
+    requestSummary: 'Uniforme Lamine Yamal / Tênis',
+    fullTranscription: 'Sou do 5º ano e eu gosto muito de jogar bola e futevôlei, como me comportei durante o ano eu quero ganhar uma roupa do Lamine Yamal, e um conjunto da Nike, e um Court Vision, e um perfume. Calção é 12 e o número do tênis é 34/35.',
+    categories: ['Roupa', 'Calçado', 'Outros'],
+    status: 'available'
+  },
+  {
+    id: '5',
+    letterCode: '1720108',
+    name: 'Gabriel',
+    age: 4,
+    gender: 'M',
+    schoolYear: 'Maternal 2',
+    requestSummary: 'Piscina de Bolinha',
+    fullTranscription: 'Sou Gabriel tenho 4 anos e quero ganhar de natal uma piscina de bolinhas.',
+    categories: ['Brinquedo'],
+    status: 'available'
+  },
+  {
+    id: '6',
+    letterCode: '1750770',
+    name: 'Felipe Sewero',
+    age: 17,
+    gender: 'M',
+    schoolYear: '7º Ano',
+    requestSummary: 'Bermuda e Camiseta TG',
+    fullTranscription: 'Bermuda e Camiseta TG. Obrigado Papai Noel.',
+    categories: ['Roupa'],
+    status: 'available'
+  },
+  {
+    id: '7',
+    letterCode: '1894986',
+    name: 'Ketellen Nicole',
+    age: 11,
+    gender: 'F',
+    schoolYear: '4º Ano',
+    requestSummary: 'Pijama Pica Pau',
+    fullTranscription: 'Oi papa noel eu quero um presente de natal Pijama do Pica Pau número (14).',
+    categories: ['Roupa'],
+    status: 'available'
+  },
+  {
+    id: '8',
+    letterCode: '1772186',
+    name: 'Benício de Souza Felippe',
+    age: 9,
+    gender: 'M',
+    schoolYear: '3º Ano',
+    requestSummary: 'Bicicleta',
+    fullTranscription: 'Olá Papai Noel, sou o Benício, um menino muito sapeca. Estou no abrigo há quase um ano, recebo visita da mãe e do meu avô. Adoro brincar no pátio com meus amiguinhos, já tenho uma motoquinha mas fico muito feliz quando vejo uma bicicleta, já quero subir. Papai Noel, um beijo enorme e aguardo meu presente.',
+    categories: ['Brinquedo'],
+    status: 'available'
+  },
+  {
+    id: '9',
+    letterCode: '1895141',
+    name: 'Theylor Luis Lo',
+    age: 10,
+    gender: 'M',
+    schoolYear: '4º Ano',
+    requestSummary: 'Bicicleta',
+    fullTranscription: 'Oi meu nome é Theylor, eu quero uma bicicleta para mim anda de bicicleta com meus amigos e consegui me diverti muito e obrigado!',
+    categories: ['Brinquedo'],
+    status: 'available'
+  },
+  {
+    id: '10',
+    letterCode: '1894865',
+    name: 'Andrei Eoirian Barbosa',
+    age: 10,
+    gender: 'M',
+    schoolYear: '4º Ano',
+    requestSummary: 'Bicicleta Vikn Azul ou Roxa',
+    fullTranscription: 'Eu gostaria de ganhar uma Vikn Azul ou Roxo. Esse ano voce podre ria me da uma bicicleta azul ou roxo uma vink muito obrigo.',
+    categories: ['Brinquedo'],
+    status: 'available'
+  },
+  {
+    id: '11',
+    letterCode: '1772209',
+    name: 'Louiza Vitória',
+    age: 13,
+    gender: 'F',
+    schoolYear: '7º Ano',
+    requestSummary: 'Roupas (M), Maquiagem, Tênis',
+    fullTranscription: 'Roupas (M), maquiagem, tênis (38-39).',
+    categories: ['Roupa', 'Calçado', 'Outros'],
+    status: 'available'
+  },
+  {
+    id: '12',
+    letterCode: '1772249',
+    name: 'Bruna Natali',
+    age: 7,
+    gender: 'F',
+    schoolYear: '2º Ano',
+    requestSummary: 'Patins com equipamento de segurança',
+    fullTranscription: 'Moro no abrigo com meus dois irmãos, já estou fazendo visita em casa aos domingos. Faço aniversário no dia 24 de dezembro e gostaria de ganhar um patins calço numero 32, mas acredito que tenha que ser maior. Já, também os equipamentos de proteção para poder brincar com segurança.',
+    categories: ['Brinquedo'],
+    status: 'available'
+  },
+  {
+    id: '13',
+    letterCode: '1741218',
+    name: 'Lucas Gabriel Oliveira',
+    age: 12,
+    gender: 'M',
+    schoolYear: '6º Ano',
+    requestSummary: 'Roupa da Nike e Chuteira',
+    fullTranscription: 'Eu gostaria de ganhar uma roupa da Nike e uma chuteira da Nike 39/40, um tenis da Oakley. Muito obrigado porque me der.',
+    categories: ['Roupa', 'Calçado'],
+    status: 'available'
+  },
+  {
+    id: '14',
+    letterCode: '1750867',
+    name: 'Kimberlly Gabriella',
+    age: 13,
+    gender: 'F',
+    schoolYear: '7º Ano',
+    requestSummary: 'Vestido e Papete',
+    fullTranscription: 'Querido Papai Noel esse ano eu gostaria de pedir o vestido tomara que caia com abertura lateral e puxador super confortavel e também uma papete bege. Tamanho 12. Obrigada Papai Noel.',
+    categories: ['Roupa', 'Calçado'],
+    status: 'available'
+  },
+  {
+    id: '15',
+    letterCode: '1859547',
+    name: 'Henrique',
+    age: 14,
+    gender: 'M',
+    schoolYear: '8º Ano',
+    requestSummary: 'Tênis 42, Pijama, Chuteira 42',
+    fullTranscription: 'Tênis nº 42, Pijama, Chuteira nº 42, meias de jogador.',
+    categories: ['Calçado', 'Roupa'],
+    status: 'available'
+  },
+  {
+    id: '16',
+    letterCode: '1720000',
+    name: 'Thales',
+    age: 11,
+    gender: 'M',
+    schoolYear: '5º Ano',
+    requestSummary: 'Bicicleta',
+    fullTranscription: 'Bicicleta. (Desenho de uma bicicleta verde).',
+    categories: ['Brinquedo'],
+    status: 'available'
+  }
+];
