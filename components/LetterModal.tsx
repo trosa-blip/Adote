@@ -41,6 +41,7 @@ Telefone: ${formData.phone}
 
 LOCAL DE ENTREGA:
 HCPA - Bloco A - Central de Chaves/Correspondências
+PRAZO: Até 10/12
 
 Comprometo-me a entregar o presente conforme as instruções.`;
 
@@ -71,7 +72,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
       `*Criança:* ${letter.name}\n` +
       `*Código:* ${letter.letterCode}\n` +
       `*Pedido:* ${letter.requestSummary}\n\n` +
-      `📅 *Entrega:* Até 20/12\n` +
+      `📅 *Entrega:* Até 10/12\n` +
       `📍 *Entregar:* HCPA - Bloco A - Central de Chaves/Correspondências.\n\n` +
       `Obrigado por fazer o Natal mais feliz! ✨`;
 
