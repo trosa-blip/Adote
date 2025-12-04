@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Letter } from '../types';
-import { X, User, Gift, CheckCircle, AlertCircle, Mail, MessageCircle } from 'lucide-react';
+import { X, User, Gift, CheckCircle, AlertCircle, Mail, MessageCircle, Loader2 } from 'lucide-react';
 
 interface LetterModalProps {
   letter: Letter | null;
@@ -11,6 +11,7 @@ interface LetterModalProps {
 export const LetterModal: React.FC<LetterModalProps> = ({ letter, onClose, onAdopt }) => {
   const [step, setStep] = useState<'details' | 'form' | 'success'>('details');
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!letter) return null;
 
@@ -21,6 +22,7 @@ export const LetterModal: React.FC<LetterModalProps> = ({ letter, onClose, onAdo
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     // Construct the email body
     const subject = `Adoção de Cartinha - Cód: ${letter.letterCode} (${letter.name})`;
@@ -37,18 +39,25 @@ Nome: ${formData.name}
 Email: ${formData.email}
 Telefone: ${formData.phone}
 
+LOCAL DE ENTREGA:
+HCPA - Bloco A - Central de Chaves/Correspondências
+Ou na sede da AADMCLIN.
+
 Comprometo-me a entregar o presente conforme as instruções.`;
 
     // Create mailto link with CC to the user
-    // Changed recipient to aadmclin@gmail.com
     const mailtoLink = `mailto:aadmclin@gmail.com?cc=${encodeURIComponent(formData.email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    // Open email client
-    window.location.href = mailtoLink;
+    // Simulate processing delay for animation
+    setTimeout(() => {
+      // Open email client
+      window.location.href = mailtoLink;
 
-    // Move to success step and trigger app adoption logic
-    onAdopt(letter.id);
-    setStep('success');
+      // Move to success step and trigger app adoption logic
+      onAdopt(letter.id);
+      setStep('success');
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   const handleWhatsApp = () => {
@@ -64,7 +73,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
       `*Código:* ${letter.letterCode}\n` +
       `*Pedido:* ${letter.requestSummary}\n\n` +
       `📅 *Entrega:* Até 20/12\n` +
-      `📍 *Locais:* HCPA (Bloco A) ou AADMCLIN.\n\n` +
+      `📍 *Entregar:* HCPA - Bloco A - Central de Chaves/Correspondências ou AADMCLIN.\n\n` +
       `Obrigado por fazer o Natal mais feliz! ✨`;
 
     const whatsappUrl = `https://wa.me/${finalPhone}?text=${encodeURIComponent(message)}`;
@@ -150,6 +159,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                     placeholder="Como gostaria de ser chamado"
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -165,6 +175,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                     placeholder="Para receber a confirmação"
                     value={formData.email}
                     onChange={e => setFormData({...formData, email: e.target.value})}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -180,6 +191,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                     placeholder="(51) 99999-9999"
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
+                    disabled={isSubmitting}
                   />
                 </div>
                 <p className="text-xs text-gray-500 mt-1">Usaremos este número para enviar os dados via WhatsApp se desejar.</p>
@@ -189,22 +201,31 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                 <button 
                   type="button"
                   onClick={() => setStep('details')}
-                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 rounded-xl transition-colors"
+                  disabled={isSubmitting}
+                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 rounded-xl transition-colors disabled:opacity-50"
                 >
                   Voltar
                 </button>
                 <button 
                   type="submit"
-                  className="flex-1 bg-christmas-green hover:bg-emerald-800 text-white font-bold py-3 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className={`flex-1 bg-christmas-green hover:bg-emerald-800 text-white font-bold py-3 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-80 scale-95 cursor-not-allowed' : 'hover:scale-105'}`}
                 >
-                  Confirmar Adoção
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="animate-spin" size={20} />
+                      Processando...
+                    </>
+                  ) : (
+                    'Confirmar Adoção'
+                  )}
                 </button>
               </div>
             </form>
           )}
 
           {step === 'success' && (
-            <div className="text-center py-4">
+            <div className="text-center py-4 animate-fade-in">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
                 <CheckCircle size={32} />
               </div>
