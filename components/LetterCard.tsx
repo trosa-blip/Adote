@@ -1,6 +1,6 @@
 import React from 'react';
 import { Letter } from '../types';
-import { Gift, Calendar, GraduationCap } from 'lucide-react';
+import { Gift, Calendar, GraduationCap, Tag } from 'lucide-react';
 
 interface LetterCardProps {
   letter: Letter;
@@ -25,7 +25,8 @@ export const LetterCard: React.FC<LetterCardProps> = ({ letter, onClick }) => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100"
           loading="lazy"
         />
-        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-gray-600 shadow-sm border border-gray-200">
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-gray-600 shadow-sm border border-gray-200 flex items-center gap-1">
+          <Tag size={12} className="text-christmas-red" />
           #{letter.letterCode}
         </div>
         

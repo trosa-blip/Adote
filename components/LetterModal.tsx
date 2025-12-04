@@ -41,7 +41,6 @@ Telefone: ${formData.phone}
 
 LOCAL DE ENTREGA:
 HCPA - Bloco A - Central de Chaves/Correspondências
-Ou na sede da AADMCLIN.
 
 Comprometo-me a entregar o presente conforme as instruções.`;
 
@@ -73,7 +72,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
       `*Código:* ${letter.letterCode}\n` +
       `*Pedido:* ${letter.requestSummary}\n\n` +
       `📅 *Entrega:* Até 20/12\n` +
-      `📍 *Entregar:* HCPA - Bloco A - Central de Chaves/Correspondências ou AADMCLIN.\n\n` +
+      `📍 *Entregar:* HCPA - Bloco A - Central de Chaves/Correspondências.\n\n` +
       `Obrigado por fazer o Natal mais feliz! ✨`;
 
     const whatsappUrl = `https://wa.me/${finalPhone}?text=${encodeURIComponent(message)}`;
@@ -245,7 +244,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
               <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 space-y-2 mb-6 text-left border border-gray-200">
                 <p><strong>1. Compre o presente</strong> com carinho.</p>
                 <p><strong>2. Embrulhe</strong> e cole a etiqueta com o código <strong>#{letter.letterCode}</strong>.</p>
-                <p><strong>3. Entregue</strong> até dia 20/12 nos pontos de coleta (HCPA ou AADMCLIN).</p>
+                <p><strong>3. Entregue</strong> até dia 20/12 no HCPA - Bloco A - Central de Chaves/Correspondências.</p>
               </div>
 
               <button 
