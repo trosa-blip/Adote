@@ -155,7 +155,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                   <input 
                     required
                     type="text" 
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent bg-white text-black placeholder-gray-500"
                     placeholder="Como gostaria de ser chamado"
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
@@ -171,7 +171,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                   <input 
                     required
                     type="email" 
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent bg-white text-black placeholder-gray-500"
                     placeholder="Para receber a confirmação"
                     value={formData.email}
                     onChange={e => setFormData({...formData, email: e.target.value})}
@@ -187,7 +187,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                   <input 
                     required
                     type="tel" 
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent bg-white text-black placeholder-gray-500"
                     placeholder="(51) 99999-9999"
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
