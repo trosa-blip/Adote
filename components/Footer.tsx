@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-lg mb-4">Fale Conosco</h4>
             <p className="text-gray-400 text-sm mb-2">Dúvidas sobre a adoção?</p>
-            <p className="text-christmas-gold font-bold text-lg">telmodarosa2015@gmail.com</p>
+            <p className="text-christmas-gold font-bold text-lg">aadmclin@gmail.com</p>
             <p className="text-gray-400 text-sm mt-2">(51) 3359-8252 Whats (51) 99449-2656</p>
           </div>
         </div>

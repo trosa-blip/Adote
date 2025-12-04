@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Letter } from '../types';
-import { X, User, Gift, CheckCircle, AlertCircle, Mail } from 'lucide-react';
+import { X, User, Gift, CheckCircle, AlertCircle, Mail, MessageCircle } from 'lucide-react';
 
 interface LetterModalProps {
   letter: Letter | null;
@@ -40,7 +40,8 @@ Telefone: ${formData.phone}
 Comprometo-me a entregar o presente conforme as instruções.`;
 
     // Create mailto link with CC to the user
-    const mailtoLink = `mailto:telmodarosa2015@gmail.com?cc=${encodeURIComponent(formData.email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Changed recipient to aadmclin@gmail.com
+    const mailtoLink = `mailto:aadmclin@gmail.com?cc=${encodeURIComponent(formData.email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Open email client
     window.location.href = mailtoLink;
@@ -48,6 +49,26 @@ Comprometo-me a entregar o presente conforme as instruções.`;
     // Move to success step and trigger app adoption logic
     onAdopt(letter.id);
     setStep('success');
+  };
+
+  const handleWhatsApp = () => {
+    // Basic phone cleaning (remove non-digits)
+    const cleanPhone = formData.phone.replace(/\D/g, '');
+    
+    // If number seems to be just DDD+Number (10 or 11 digits), prepend Brazil country code (55)
+    const finalPhone = (cleanPhone.length >= 10 && cleanPhone.length <= 11) ? `55${cleanPhone}` : cleanPhone;
+
+    const message = `Olá ${formData.name}! 🎄\n\n` +
+      `Aqui estão os dados da cartinha que você adotou:\n\n` +
+      `*Criança:* ${letter.name}\n` +
+      `*Código:* ${letter.letterCode}\n` +
+      `*Pedido:* ${letter.requestSummary}\n\n` +
+      `📅 *Entrega:* Até 20/12\n` +
+      `📍 *Locais:* HCPA (Bloco A) ou AADMCLIN.\n\n` +
+      `Obrigado por fazer o Natal mais feliz! ✨`;
+
+    const whatsappUrl = `https://wa.me/${finalPhone}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -112,7 +133,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
               <div className="bg-blue-50 p-4 rounded-lg flex gap-3 text-sm text-blue-700 mb-6">
                 <AlertCircle className="flex-shrink-0" size={20} />
                 <p>
-                  Ao clicar em confirmar, seu cliente de e-mail padrão será aberto com uma mensagem pronta para <strong>telmodarosa2015@gmail.com</strong>.
+                  Ao clicar em confirmar, seu cliente de e-mail padrão será aberto com uma mensagem pronta para <strong>aadmclin@gmail.com</strong>.
                   <br/><br/>
                   Basta enviar para concluir. <strong>Você receberá uma cópia (Cc) deste e-mail como comprovante.</strong>
                 </p>
@@ -141,7 +162,7 @@ Comprometo-me a entregar o presente conforme as instruções.`;
                     required
                     type="email" 
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent"
-                    placeholder="Para contato sobre a entrega"
+                    placeholder="Para receber a confirmação"
                     value={formData.email}
                     onChange={e => setFormData({...formData, email: e.target.value})}
                   />
@@ -150,14 +171,18 @@ Comprometo-me a entregar o presente conforme as instruções.`;
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Seu Telefone / WhatsApp</label>
-                <input 
-                  required
-                  type="tel" 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent"
-                  placeholder="(51) 99999-9999"
-                  value={formData.phone}
-                  onChange={e => setFormData({...formData, phone: e.target.value})}
-                />
+                <div className="relative">
+                  <MessageCircle className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <input 
+                    required
+                    type="tel" 
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-christmas-red focus:border-transparent"
+                    placeholder="(51) 99999-9999"
+                    value={formData.phone}
+                    onChange={e => setFormData({...formData, phone: e.target.value})}
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Usaremos este número para enviar os dados via WhatsApp se desejar.</p>
               </div>
 
               <div className="pt-4 flex gap-3">
@@ -186,10 +211,17 @@ Comprometo-me a entregar o presente conforme as instruções.`;
               <h3 className="text-2xl font-display text-gray-800 mb-2">Obrigado!</h3>
               <p className="text-gray-600 mb-6">
                 Você acaba de fazer o Natal de uma criança mais feliz.
-                Verifique se o e-mail foi enviado corretamente.
               </p>
               
-              <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 space-y-2 mb-6 text-left">
+              <button 
+                onClick={handleWhatsApp}
+                className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-xl shadow-sm hover:shadow-md transition-all mb-6 flex items-center justify-center gap-2"
+              >
+                <MessageCircle size={20} />
+                Receber dados no meu WhatsApp
+              </button>
+
+              <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 space-y-2 mb-6 text-left border border-gray-200">
                 <p><strong>1. Compre o presente</strong> com carinho.</p>
                 <p><strong>2. Embrulhe</strong> e cole a etiqueta com o código <strong>#{letter.letterCode}</strong>.</p>
                 <p><strong>3. Entregue</strong> até dia 20/12 nos pontos de coleta (HCPA ou AADMCLIN).</p>
